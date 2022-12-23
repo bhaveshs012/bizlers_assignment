@@ -1,4 +1,3 @@
-import 'package:bizlers_assignment/views/select_make.dart';
 import 'package:bizlers_assignment/views/vehicle_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

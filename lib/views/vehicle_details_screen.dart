@@ -1,4 +1,6 @@
 import 'package:bizlers_assignment/models/vehicle.dart';
+import 'package:bizlers_assignment/widgets/vehicleDetailScreen/vehicle_detail_tile.dart';
+import 'package:bizlers_assignment/widgets/vehicleDetailScreen/vehicle_detail_title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +44,7 @@ class VehicleDetailScreen extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.7,
             padding: const EdgeInsets.all(
-              16.0,
+              25.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,113 +53,35 @@ class VehicleDetailScreen extends StatelessWidget {
                   height: 20.0,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     VehicleDetailTile(
-                      'MAKE',
-                      vehicle.vehicleMake.toString(),
-                    ),
+                        'MAKE', vehicle.vehicleMake.toString(), context),
                     SizedBox(
                       width: 25.0,
                     ),
                     VehicleDetailTile(
-                      'MODEL',
-                      vehicle.vehicleModel.toString(),
-                    ),
+                        'MODEL', vehicle.vehicleModel.toString(), context),
                   ],
                 ),
                 const SizedBox(
-                  height: 35.0,
+                  height: 55.0,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     VehicleDetailTile(
-                      'FUEL TYPE',
-                      vehicle.fuelType.toString(),
-                    ),
+                        'FUEL TYPE', vehicle.fuelType.toString(), context),
                     SizedBox(
                       width: 25.0,
                     ),
-                    VehicleDetailTile(
-                      'TRANSMISSION',
-                      vehicle.vehicleTransmission.toString(),
-                    ),
+                    VehicleDetailTile('TRANSMISSION',
+                        vehicle.vehicleTransmission.toString(), context),
                   ],
                 ),
               ],
             ),
           )
-        ],
-      ),
-    );
-  }
-
-  Widget VehicleDetailTile(String title, String subtitle) {
-    return Center(
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16.0,
-              ),
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Text(
-              subtitle.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class VehicleDetailTitleBar extends StatelessWidget {
-  const VehicleDetailTitleBar({
-    Key? key,
-    required this.vehicle,
-  }) : super(key: key);
-
-  final Vehicle vehicle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(
-        16.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '${vehicle.vehicleModel} ${vehicle.vehicleTransmission}'
-                .toUpperCase(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 26.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(
-            height: 8.0,
-          ),
-          Text(
-            '${vehicle.vehicleNumber}'.toUpperCase(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
-          ),
         ],
       ),
     );

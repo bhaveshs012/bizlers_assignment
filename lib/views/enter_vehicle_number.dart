@@ -20,7 +20,7 @@ class VehicleNumberScreen extends StatelessWidget {
         onPressed: (() {
           if (_formKey.currentState!.validate()) {
             vehicleController.currVehicleNumber.value =
-                _vehicleNumberController.text;
+                _vehicleNumberController.text.replaceAll(' ', '');
             print("All good");
             Get.to(
               () => VehicleMakeScreen(),
@@ -67,7 +67,9 @@ class VehicleNumberScreen extends StatelessWidget {
                   validator: ((value) {
                     if (value!.isEmpty ||
                         !RegExp('^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}') //* CHECK FOR VALID NUMBER USING REGEX
-                            .hasMatch(value)) {
+                            .hasMatch(
+                          value.replaceAll(' ', ''),
+                        )) {
                       return 'Please enter vehicle number';
                     }
                     return null;
